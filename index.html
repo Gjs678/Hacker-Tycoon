@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Tycoon - Digital Underground</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Start Screen -->
+        <div id="start-screen" class="screen active">
+            <div class="container center">
+                <div class="terminal-icon">⌘</div>
+                <h1 class="glitch main-title">HACKER TYCOON</h1>
+                <p class="subtitle">Enter the Digital Underground</p>
+                <button class="btn btn-primary" onclick="game.showScreen('menu')">
+                    ▶ START
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu Screen -->
+        <div id="menu-screen" class="screen">
+            <div class="container center">
+                <div class="terminal-icon small">⌘</div>
+                <h2>MAIN MENU</h2>
+                <div class="menu-buttons">
+                    <button class="btn btn-secondary" onclick="game.showScreen('characters')">
+                        👤 NEW GAME
+                    </button>
+                    <button class="btn btn-secondary" onclick="game.loadGame()">
+                        💾 CONTINUE
+                    </button>
+                    <button class="btn btn-secondary" onclick="game.showScreen('leaderboard')">
+                        🏆 LEADERBOARD
+                    </button>
+                    <button class="btn btn-secondary" onclick="game.showScreen('start')">
+                        ← BACK
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Character Selection Screen -->
+        <div id="characters-screen" class="screen">
+            <div class="container">
+                <h2 class="text-center">SELECT CHARACTER</h2>
+                <div id="character-grid" class="character-grid"></div>
+                <div class="text-center mt-4">
+                    <button class="btn btn-secondary" onclick="game.showScreen('menu')">← BACK</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Backstory Screen -->
+        <div id="backstory-screen" class="screen">
+            <div class="container center">
+                <div id="backstory-content"></div>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen">
+            <div class="container-fluid">
+                <!-- Player Stats -->
+                <div class="player-stats" id="player-stats"></div>
+
+                <!-- Game Content -->
+                <div class="game-layout">
+                    <!-- Missions Panel -->
+                    <div class="missions-panel">
+                        <h3>⌘ AVAILABLE MISSIONS</h3>
+                        <div id="missions-list"></div>
+                        <button class="btn btn-small" onclick="game.rest()">😴 REST (+30 Energy, -5 Heat)</button>
+                        <button class="btn btn-small" onclick="game.saveGame()">💾 SAVE GAME</button>
+                    </div>
+
+                    <!-- Side Panel -->
+                    <div class="side-panel">
+                        <!-- Shop -->
+                        <div class="panel">
+                            <h3>🛒 SHOP</h3>
+                            <div id="shop-list"></div>
+                        </div>
+
+                        <!-- Achievements -->
+                        <div class="panel">
+                            <h3>🏆 ACHIEVEMENTS</h3>
+                            <div id="achievements-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard Screen -->
+        <div id="leaderboard-screen" class="screen">
+            <div class="container center">
+                <h2>🏆 LEADERBOARD</h2>
+                <div id="leaderboard-content" class="leaderboard"></div>
+                <button class="btn btn-secondary" onclick="game.showScreen('menu')">← BACK</button>
+            </div>
+        </div>
+
+        <!-- Victory Screen -->
+        <div id="victory-screen" class="screen">
+            <div class="container center">
+                <div class="achievement-icon">🏆</div>
+                <h1>VICTORY!</h1>
+                <p class="subtitle">You've become a Master Hacker!</p>
+                <div id="victory-stats"></div>
+                <button class="btn btn-primary" onclick="game.showScreen('menu')">MAIN MENU</button>
+            </div>
+        </div>
+
+        <!-- Game Over Screen -->
+        <div id="gameover-screen" class="screen">
+            <div class="container center">
+                <div class="gameover-icon">⚠️</div>
+                <h1 class="text-red">BUSTED!</h1>
+                <p class="subtitle">The authorities caught you. Game Over.</p>
+                <div id="gameover-stats"></div>
+                <button class="btn btn-danger" onclick="game.showScreen('menu')">MAIN MENU</button>
+            </div>
+        </div>
+
+        <!-- Mini Game Modal -->
+        <div id="minigame-modal" class="modal">
+            <div class="modal-content">
+                <div id="minigame-content"></div>
+            </div>
+        </div>
+
+        <!-- Notification -->
+        <div id="notification" class="notification"></div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
